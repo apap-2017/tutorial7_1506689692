@@ -22,15 +22,13 @@ public class StudentServiceDatabase implements StudentService
     @Override
     public StudentModel selectStudent (String npm)
     {
-        log.info ("select student with npm {}", npm);
-        return studentMapper.selectStudent (npm);
+      return studentMapper.selectStudent (npm);
     }
 
 
     @Override
     public List<StudentModel> selectAllStudents ()
     {
-        log.info ("select all students");
         return studentMapper.selectAllStudents ();
     }
 
@@ -45,22 +43,26 @@ public class StudentServiceDatabase implements StudentService
     @Override
     public void deleteStudent (String npm)
     {
-    	log.info("student " + npm + " deleted");
     	studentMapper.deleteStudent(npm);
     }
 
 
 	@Override
 	public void updateStudent(StudentModel student) {
-		log.info("student " + student.getNpm() + " updated");
+	
 		studentMapper.updateStudent(student);
 	}
 
 
 	@Override
 	public CourseModel selectCourse(String id_course) {
-		 log.info ("select student with id_course {}", id_course);
+		
 	     return studentMapper.selectCourse (id_course);
+	}
+	
+	@Override
+	public List<CourseModel> selectAllCourses(){
+		return studentMapper.selectAllCourses();
 	}
 
 }
