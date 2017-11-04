@@ -127,7 +127,7 @@ public class StudentController
     }
     
     @RequestMapping("/course/view/{id_course}")
-    public String viewCoursePath (Model model,
+    public String viewCourse (Model model,
             @PathVariable(value = "id_course") String id_course)
     {
         CourseModel course = studentDAO.selectCourse(id_course);
@@ -139,5 +139,20 @@ public class StudentController
         	model.addAttribute ("id_course", id_course);
             return "not-found-course";
         }
+    }
+    
+    
+    @RequestMapping("/course/viewall")
+    public String viewAllCourses(Model model) {
+    	List<CourseModel> allCourses = studentDAO.selectAllCourses();
+    	
+    	if(allCourses != null) {
+    		model.addAttribute("allCourses", allCourses);
+    		return "viewAllCourses";
+    	} else {
+    		model.addAttribute("allCourses", allCourses);
+    		return "not-found";
+    	}
+    	
     }
 }

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<!-- jQuery library -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<link rel="stylesheet" href="../../css/searchbar.css" />
+
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.css" />
+
+<script type="text/javascript"
+	src="https://cdn.datatables.net/v/dt/dt-1.10.16/datatables.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+		$('#view-data').DataTable();
+	});
+</script>
+<title>View All Courses</title>
+</head>
+<body>
+
+	<div th:replace="fragments/fragment :: header"></div>
+	<h1>All Students</h1>
+	<table id="view-data" class="display" cellspacing="0" width="100%">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>ID</th>
+				<th>Name</th>
+				<th>Credits</th>
+			</tr>
+		</thead>
+		<tbody>
+			<div th:each="allCourses,iterationStatus: ${allCourses}"
+				th:class="${iterationStatus.odd}? 'odd'">
+				<tr>
+					<td><h3 th:text="${iterationStatus.count}"></h3></td>
+					<td><h3 th:text="${allCourses.idCourse}"></h3></td>
+					<td><h3 th:text="${allCourses.name}"></h3></td>
+					<td><h3 th:text="${allCourses.credits}"></h3></td>
+				</tr>
+			</div>
+		</tbody>
+	</table>
+	<div th:replace="fragments/fragment :: footer"></div>
+</body>
+</html>
